@@ -162,16 +162,27 @@ public class XML {
             super.init(.document)
         }
         
+        /// initialise with a single root element 
         public init(rootElement: XML.Element) {
             super.init(.document)
             setRootElement(rootElement)
         }
         
-        /// initialise with a block XML data
+        /// initialise with a block of XML data
         public init(data: Data) throws {
             super.init(.document)
             do {
                 let element = try XML.Element(xmlData: data)
+                setRootElement(element)
+            } catch ParsingError.emptyFile {
+            }
+        }
+        
+        /// initialise with a string with XML data
+        public init(xmlString: String) throws {
+            super.init(.document)
+            do {
+                let element = try XML.Element(xmlString: xmlString)
                 setRootElement(element)
             } catch ParsingError.emptyFile {
             }
