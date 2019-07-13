@@ -21,3 +21,4 @@ And to create a Codable class from xml data
 let xmlDocument = try XML.Document(data: data)
 let codable = try XMLDecoder().decode(Codable.self, from: xmlDocument.rootElement) 
 ```
+Reference documentation can be found [here](https://adam-fowler.github.io/xml-encoder/index.html).
