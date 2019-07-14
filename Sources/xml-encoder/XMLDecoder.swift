@@ -12,13 +12,13 @@ public enum XMLContainerCoding {
     /// Default case, flat arrays and coding dictionaries like all other codable structures
     case `default`
     
-    /// Case for coding arrays. where there is an enclosing xml element and each array element has name is defined by element. eg <array><member>1</member><member>2</member></array>
+    /// Case for coding arrays. where there is an enclosing xml element and each array element has name is defined by element. eg `<array><member>1</member><member>2</member></array>`
     case array(entry: String?)
     
-    /// Case for coding dictionaries where key element contains the value. Encoding like a struct or class where the keys are the variable names. This is only valid for dictionaries that have keys of type 'String' eg <dict><key>value</key><key2>value2</key2></dict>
+    /// Case for coding dictionaries where key element contains the value. Encoding like a struct or class where the keys are the variable names. This is only valid for dictionaries that have keys of type `String` eg `<dict><key>value</key><key2>value2</key2></dict>`
     case structure
     
-    /// Case for coding dictionaries where key and value are stored in separate elements and these can be either stored as children of the dictionary element or as children of a enclosing entry element which is then stored under the dictionary element eg <dict><entry><key>name</key><value>John Smith</value></entry><entry>...</entry>...</dict>
+    /// Case for coding dictionaries where key and value are stored in separate elements and these can be either stored as children of the dictionary element or as children of a enclosing entry element which is then stored under the dictionary element eg `<dict><entry><key>name</key><value>John Smith</value></entry><entry>...</entry>...</dict>`
     case dictionary(entry: String?, key: String, value: String)
 }
 
