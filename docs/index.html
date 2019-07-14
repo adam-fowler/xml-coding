@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (88% documented)</p>
+        <p class="header-right"><a href="https://github.com/adam-fowler/xml-encoder"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/XML.html">XML</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XML/Node.html">– Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XML/Document.html">– Document</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XML/Element.html">– Element</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLDecoder.html">XMLDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLDecoder/DateDecodingStrategy.html">– DateDecodingStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLDecoder/DataDecodingStrategy.html">– DataDecodingStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLDecoder/NonConformingFloatDecodingStrategy.html">– NonConformingFloatDecodingStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLEncoder.html">XMLEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLEncoder/DateEncodingStrategy.html">– DateEncodingStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLEncoder/DataEncodingStrategy.html">– DataEncodingStrategy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/XMLEncoder/NonConformingFloatEncodingStrategy.html">– NonConformingFloatEncodingStrategy</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/XMLContainerCoding.html">XMLContainerCoding</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/XMLCodable.html">XMLCodable</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='xml-encoder' class='heading'>XML Encoder</h1>
+
+<div>
+    <a href="https://swift.org">
+        <img src="http://img.shields.io/badge/swift-5.0-brightgreen.svg" alt="Swift 5.0" />
+    </a>
+    <a href="https://travis-ci.org/adam-fowler/xml-encoder">
+        <img src="https://travis-ci.org/adam-fowler/xml-encoder.svg?branch=master" alt="Travis Build" />
+    </a>
+</div>
+
+<p>This is a XML encoder and decoder that integrates with the Swift Codable system. It can create an XML tree from a Codable class or create Codable classes from an XML tree. The encoder uses its own XML classes which fairly closely follow the format of the XMLNode classes found in the macOS and Linux Foundation classes.</p>
+<h2 id='using-the-classes' class='heading'>Using the classes</h2>
+
+<p>The basic method for saving a XML file from a Codable class or struct is as follows</p>
+<pre class="highlight plaintext"><code>let xml = try XMLEncoder().encode(codable)
+let xmlString = xml.xmlString
+</code></pre>
+
+<p>And to create a Codable class from xml data</p>
+<pre class="highlight plaintext"><code>let xmlDocument = try XML.Document(data: data)
+let codable = try XMLDecoder().decode(Codable.self, from: xmlDocument.rootElement) 
+</code></pre>
+
+<p>Reference documentation can be found <a href="https://adam-fowler.github.io/xml-encoder/index.html">here</a>.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/adam-fowler" target="_blank" rel="external">Adam Fowler</a>. All rights reserved. (Last updated: 2019-07-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
