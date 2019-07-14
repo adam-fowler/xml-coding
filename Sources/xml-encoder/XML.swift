@@ -25,9 +25,9 @@ public class XML {
             case comment
         }
         
-        /// Defines the type of xml node
+        /// Defines the type of XML node
         public let kind : Kind
-        /// Name of xml node
+        /// Name of XML node
         public var name : String?
         /// String value associated with XMLNode
         public var stringValue : String?
@@ -160,10 +160,12 @@ public class XML {
     
     /// XML Document class
     public class Document : XML.Node {
+        /// XML version. If not set defaults to 1.0
         public var version : String?
+        /// XML character encoding. If not set defaults to UTF-8
         public var characterEncoding : String?
         
-        /// Construct an XML Document
+        /// Initialize an XML Document
         public init() {
             super.init(.document)
         }
@@ -184,7 +186,7 @@ public class XML {
             }
         }
         
-        /// Initialise with a string with XML data
+        /// Initialise with a string containing XML data
         public init(xmlString: String) throws {
             super.init(.document)
             do {
@@ -226,7 +228,7 @@ public class XML {
         
         /// array of attributes attached to XML ELement
         public fileprivate(set) var attributes : [XML.Node]?
-        /// array of namespaces attached to XML ELement
+        /// array of namespaces attached to XML Element
         public fileprivate(set) var namespaces : [XML.Node]?
 
         /// Initialize XML Element with name and text it contains. The text is stored as a child text node
@@ -235,7 +237,7 @@ public class XML {
             self.stringValue = stringValue
         }
         
-        /// Initialise XML.Element from xml data
+        /// Initialise XML Element from XML data
         public init(xmlData: Data) throws {
             super.init(.element)
             let parser = XMLParser(data: xmlData)
@@ -256,13 +258,13 @@ public class XML {
             }
         }
         
-        /// Initialise XML Element from xml string
+        /// Initialise XML Element from string containing XML
         convenience public init(xmlString: String) throws {
             let data = xmlString.data(using: .utf8)!
             try self.init(xmlData: data)
         }
         
-        /// Return children XML elements
+        /// Return children XML elements with a given name
         public func elements(forName: String) -> [XML.Element] {
             return children?.compactMap {
                 if let element = $0 as? XML.Element, element.name == forName {
@@ -287,7 +289,7 @@ public class XML {
             }
         }
         
-        /// Add a child node to the xml element
+        /// Add a child node to the XML element
         public func addChild(_ node: XML.Node) {
             assert(node.kind != .namespace && node.kind != .attribute && node.kind != .document)
             if children == nil {
@@ -317,7 +319,7 @@ public class XML {
             }
         }
         
-        /// Return attribute attached to element
+        /// Return attribute attached to element with a given name
         public func attribute(forName: String) -> XML.Node? {
             return attributes?.first {
                 if $0.name == forName {
@@ -341,7 +343,7 @@ public class XML {
             node.parent = self
         }
         
-        /// Set this elements children nodes
+        /// Set this elements attribute nodes
         public func setAttributes(_ attributes: [XML.Node]?) {
             for attribute in self.attributes ?? [] {
                 attribute.parent = nil
@@ -353,7 +355,7 @@ public class XML {
             }
         }
         
-        /// Return namespace attached to element
+        /// Return namespace attached to element with a given name
         public func namespace(forName: String?) -> XML.Node? {
             return namespaces?.first {
                 if $0.name == forName {
@@ -377,7 +379,7 @@ public class XML {
             node.parent = self
         }
         
-        /// Set this elements children nodes
+        /// Set this elements namespace nodes
         public func setNamespaces(_ namespaces: [XML.Node]?) {
             for namespace in self.namespaces ?? [] {
                 namespace.parent = nil
