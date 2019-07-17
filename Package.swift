@@ -4,11 +4,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "xml-encoder",
+    name: "XMLEncoder",
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "xml-encoder",
+            name: "XMLEncoder",
             targets: ["xml-encoder"]),
     ],
     dependencies: [
