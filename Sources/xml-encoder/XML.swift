@@ -191,6 +191,26 @@ public class XML {
                 return ""
             }
         }
+
+        /// A node's index among its siblings
+        public var index: Int {
+            if let siblings = self.parent?.children,
+                let index = siblings.firstIndex(where: {$0 === self}) {
+                return index
+            }
+            return 0
+        }
+        
+        /// The depth of the node within the tree. Documents and standalone nodes are level 0
+        var level: Int {
+            var result = 0
+            var nextParent = self.parent
+            while let parent = nextParent {
+                result += 1
+                nextParent = parent.parent
+            }
+            return result
+        }
     }
 
     /// XML Node that has XML Children nodes
@@ -446,7 +466,7 @@ public class XML {
             }
         }
 
-        /// Return formatted XML
+        /// Return formatted XML as a String
         override public func xmlString(options: Options) -> String {
             let combinedOptions = options.union(self.options)
             let children = self.children ?? []
@@ -553,10 +573,7 @@ public class XML {
         // if preserving whitespace. This is a bit of a hack as the parser doesn't return whitespace outside of the rootelement
         private func whitespaceOutsideRootElement(_ parser: XMLParser) {
             if options.contains(.nodePreserveWhitespace) && rootElement == nil && currentNode != nil {
-                var whitespace = ""
-                for _ in lineNumber..<parser.lineNumber {
-                    whitespace += "\n"
-                }
+                let whitespace = String(repeating: "\n", count: parser.lineNumber - lineNumber)
                 if whitespace != "" {
                     currentNode?.addChild(Node.text(stringValue: whitespace))
                 }

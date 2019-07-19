@@ -142,13 +142,7 @@ class XMLTests: XCTestCase {
                         <c>after </c>
                     </test>
                     """
-        do {
-            let xmlDocument = try XML.Document(xmlString: xml, options: .nodePreserveWhitespace)
-            let xml2 = xmlDocument.xmlString
-            XCTAssertEqual(xml2, xml)
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
+        testDecodeEncode(xml: xml, options: .nodePreserveWhitespace)
     }
 
     static var allTests : [(String, (XMLTests) -> () throws -> Void)] {
