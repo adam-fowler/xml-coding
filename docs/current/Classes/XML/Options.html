@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DateEncodingStrategy Enumeration Reference</title>
+    <title>Options Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/DateEncodingStrategy" class="dashAnchor"></a>
-    <a title="DateEncodingStrategy Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Struct/Options" class="dashAnchor"></a>
+    <a title="Options Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html"> Docs</a> (92% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html"> Reference</a>
         <img id="carat" src="../../img/carat.png" />
-        DateEncodingStrategy Enumeration Reference
+        Options Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -99,14 +99,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>DateEncodingStrategy</h1>
+            <h1>Options</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">DateEncodingStrategy</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Options</span> <span class="p">:</span> <span class="kt">OptionSet</span></code></pre>
 
                 </div>
               </div>
-            <p>The strategy to use for encoding <code>Date</code> values.</p>
+            <p>Options for parsing and outputting XML Data</p>
 
           </section>
           <section class="section task-group-section">
@@ -115,9 +115,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO010deferredToD0yA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/deferredToDate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO010deferredToD0yA2EmF">deferredToDate</a>
+                    <a name="/s:SY8rawValue03RawB0Qzvp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SY8rawValue03RawB0Qzvp">rawValue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -125,14 +125,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Defer to <code>Date</code> for choosing an encoding. This is the default strategy.</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">deferredToDate</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -142,9 +141,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO16secondsSince1970yA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/secondsSince1970" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO16secondsSince1970yA2EmF">secondsSince1970</a>
+                    <a name="/s:11xml_encoder3XMLC7OptionsV23nodeCompactEmptyElementAEvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/nodeCompactEmptyElement" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC7OptionsV23nodeCompactEmptyElementAEvpZ">nodeCompactEmptyElement</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -152,14 +151,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Encode the <code>Date</code> as a UNIX timestamp (as a JSON number).</p>
+                        <p>if an XML Element has no children then output as <code>&lt;element /&gt;</code>. Default is to output <code>&lt;element&gt;&lt;/element&gt;</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">secondsSince1970</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nodeCompactEmptyElement</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
 
                         </div>
                       </div>
@@ -169,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO21millisecondsSince1970yA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/millisecondsSince1970" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO21millisecondsSince1970yA2EmF">millisecondsSince1970</a>
+                    <a name="/s:11xml_encoder3XMLC7OptionsV15nodePrettyPrintAEvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/nodePrettyPrint" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC7OptionsV15nodePrettyPrintAEvpZ">nodePrettyPrint</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -179,14 +178,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Encode the <code>Date</code> as UNIX millisecond timestamp (as a JSON number).</p>
+                        <p>output XML as human readable</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">millisecondsSince1970</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nodePrettyPrint</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
 
                         </div>
                       </div>
@@ -196,9 +195,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO7iso8601yA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/iso8601" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO7iso8601yA2EmF">iso8601</a>
+                    <a name="/s:11xml_encoder3XMLC7OptionsV11nodeIsCDATAAEvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/nodeIsCDATA" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC7OptionsV11nodeIsCDATAAEvpZ">nodeIsCDATA</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -206,14 +205,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Encode the <code>Date</code> as an ISO-8601-formatted string (in RFC 3339 format).</p>
+                        <p>flag that XML Node should be output as CDATA</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">iso8601</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nodeIsCDATA</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
 
                         </div>
                       </div>
@@ -223,9 +222,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO9formattedyAESo15NSDateFormatterCcAEmF"></a>
-                    <a name="//apple_ref/swift/Element/formatted(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO9formattedyAESo15NSDateFormatterCcAEmF">formatted(_:)</a>
+                    <a name="/s:11xml_encoder3XMLC7OptionsV22nodePreserveWhitespaceAEvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/nodePreserveWhitespace" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC7OptionsV22nodePreserveWhitespaceAEvpZ">nodePreserveWhitespace</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -233,14 +232,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Encode the <code>Date</code> as a string formatted by the given formatter.</p>
+                        <p>when parsing XML preserve the whitespace sections</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">formatted</span><span class="p">(</span><span class="kt">DateFormatter</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nodePreserveWhitespace</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
 
                         </div>
                       </div>
@@ -250,9 +249,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO6customyAEy10Foundation0D0V_s7Encoder_ptKccAEmF"></a>
-                    <a name="//apple_ref/swift/Element/custom(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder10XMLEncoderC20DateEncodingStrategyO6customyAEy10Foundation0D0V_s7Encoder_ptKccAEmF">custom(_:)</a>
+                    <a name="/s:11xml_encoder3XMLC7OptionsV17nodePreserveCDATAAEvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/nodePreserveCDATA" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC7OptionsV17nodePreserveCDATAAEvpZ">nodePreserveCDATA</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -260,16 +259,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Encode the <code>Date</code> as a custom value encoded by the given closure.</p>
-
-<p>If the closure fails to encode a value into the given encoder, the encoder will encode an empty automatic container in its place.</p>
+                        <p>when parsing XML preserve the CDATA text elements</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">custom</span><span class="p">((</span><span class="kt">Date</span><span class="p">,</span> <span class="kt">Encoder</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nodePreserveCDATA</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s9OptionSetP8rawValuex03RawD0Qz_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s9OptionSetP8rawValuex03RawD0Qz_tcfc">init(rawValue:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

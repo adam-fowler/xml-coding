@@ -14,7 +14,7 @@
     <a title="Document Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../../index.html"> Docs</a> (88% documented)</p>
+        <p><a href="../../index.html"> Docs</a> (92% documented)</p>
         <p class="header-right"><a href="https://github.com/adam-fowler/xml-encoder"><img src="../../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -35,7 +35,16 @@
                 <a href="../../Classes/XML.html">XML</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Classes/XML/Kind.html">– Kind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/XML/Options.html">– Options</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Classes/XML/Node.html">– Node</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/XML/ContainerNode.html">– ContainerNode</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/XML/Document.html">– Document</a>
@@ -93,7 +102,7 @@
             <h1>Document</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Document</span> <span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt"><a href="../../Classes/XML/Node.html">Node</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Document</span> <span class="p">:</span> <span class="kt"><a href="../../Classes/XML.html">XML</a></span><span class="o">.</span><span class="kt"><a href="../../Classes/XML/ContainerNode.html">ContainerNode</a></span></code></pre>
 
                 </div>
               </div>
@@ -116,7 +125,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>XML version. If not set defaults to 1.0</p>
 
                       </div>
                       <div class="declaration">
@@ -143,7 +152,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>XML character encoding. If not set defaults to UTF-8</p>
 
                       </div>
                       <div class="declaration">
@@ -170,7 +179,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Construct an XML Document</p>
+                        <p>Initialize an XML Document</p>
 
                       </div>
                       <div class="declaration">
@@ -214,9 +223,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder3XMLC8DocumentC4dataAE10Foundation4DataV_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(data:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC4dataAE10Foundation4DataV_tKcfc">init(data:)</a>
+                    <a name="/s:11xml_encoder3XMLC8DocumentC4data7optionsAE10Foundation4DataV_AC7OptionsVtKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(data:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC4data7optionsAE10Foundation4DataV_AC7OptionsVtKcfc">init(data:options:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -231,7 +240,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML/Options.html">Options</a></span> <span class="o">=</span> <span class="p">[])</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -241,9 +250,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder3XMLC8DocumentC0A6StringAESS_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(xmlString:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC0A6StringAESS_tKcfc">init(xmlString:)</a>
+                    <a name="/s:11xml_encoder3XMLC8DocumentC0A6String7optionsAESS_AC7OptionsVtKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(xmlString:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC0A6String7optionsAESS_AC7OptionsVtKcfc">init(xmlString:options:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -251,14 +260,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initialise with a string with XML data</p>
+                        <p>Initialise with a string containing XML data</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">xmlString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">xmlString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML/Options.html">Options</a></span> <span class="o">=</span> <span class="p">[])</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -322,9 +331,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11xml_encoder3XMLC8DocumentC0A6StringSSvp"></a>
-                    <a name="//apple_ref/swift/Property/xmlString" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC0A6StringSSvp">xmlString</a>
+                    <a name="/s:11xml_encoder3XMLC8DocumentC0A6String7optionsSSAC7OptionsV_tF"></a>
+                    <a name="//apple_ref/swift/Method/xmlString(options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC0A6String7optionsSSAC7OptionsV_tF">xmlString(options:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -332,14 +341,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Output formatted XML</p>
+                        <p>Output formatted XML as a String</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">xmlString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">xmlString</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML/Options.html">Options</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -373,12 +382,39 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11xml_encoder3XMLC8DocumentC0A4Data7options10Foundation0E0VAC7OptionsV_tF"></a>
+                    <a name="//apple_ref/swift/Method/xmlData(options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11xml_encoder3XMLC8DocumentC0A4Data7options10Foundation0E0VAC7OptionsV_tF">xmlData(options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Output formatted XML as Data</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">xmlData</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Classes/XML/Options.html">Options</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/adam-fowler" target="_blank" rel="external">Adam Fowler</a>. All rights reserved. (Last updated: 2019-07-14)</p>
+          <p>© 2019 Adam Fowler</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
