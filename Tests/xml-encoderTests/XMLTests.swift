@@ -12,10 +12,10 @@ import XCTest
 class XMLTests: XCTestCase {
 
     /// helper test function to use throughout all the decode/encode tests
-    func testDecodeEncode(xml: String) {
+    func testDecodeEncode(xml: String, options: XML.Options = []) {
         do {
-            let xmlDocument = try XML.Document(data: xml.data(using: .utf8)!)
-            let xml2 = xmlDocument.xmlString
+            let xmlDocument = try XML.Document(data: xml.data(using: .utf8)!, options: options)
+            let xml2 = xmlDocument.xmlString(options: options)
             XCTAssertEqual(xml, xml2)
         } catch {
             XCTFail(error.localizedDescription)
@@ -89,8 +89,11 @@ class XMLTests: XCTestCase {
         let xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test><![CDATA[CDATA test]]></test>"
         do {
             let xmlDocument = try XML.Document(data: xml.data(using: .utf8)!)
-            let xml2 = xmlDocument.xmlString
-            XCTAssertEqual(xml2, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test>CDATA test</test>")
+            let xml1 = xmlDocument.xmlString
+            let xmlDocument2 = try XML.Document(data: xml.data(using: .utf8)!, options: .nodePreserveCDATA)
+            let xml2 = xmlDocument2.xmlString
+            XCTAssertEqual(xml1, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test>CDATA test</test>")
+            XCTAssertEqual(xml2, xml)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -99,14 +102,55 @@ class XMLTests: XCTestCase {
     func testWhitespaceDecodeEncode() {
         let xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test> <a> before</a><b></b> <c>after </c></test>"
         do {
-            let xmlDocument = try XML.Document(data: xml.data(using: .utf8)!)
-            let xml2 = xmlDocument.xmlString
-            XCTAssertEqual(xml2, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test><a> before</a><b></b><c>after </c></test>")
+            let xmlDocument = try XML.Document(xmlString: xml)
+            let xml1 = xmlDocument.xmlString
+            let xmlDocument2 = try XML.Document(xmlString: xml, options: .nodePreserveWhitespace)
+            let xml2 = xmlDocument2.xmlString
+            XCTAssertEqual(xml1, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test><a> before</a><b></b><c>after </c></test>")
+            XCTAssertEqual(xml2, xml)
         } catch {
             XCTFail(error.localizedDescription)
         }
     }
     
+    func testPreserveWhitespaceDecodeEncode() {
+        let xml = """
+                    <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+                    <test>
+                        <a> before</a>
+                        <b></b>
+                        <c>after </c>
+                    </test>
+                    """
+        testDecodeEncode(xml: xml, options: .nodePreserveWhitespace)
+    }
+    
+    func testCompactedEmptyElementsDecodeEncode() {
+        let xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test><compacted/></test>"
+        testDecodeEncode(xml: xml, options: .nodeCompactEmptyElement)
+    }
+    
+    func testNodesOutsideRootElementDecodeEncode() {
+        let xml = """
+                    <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+                    
+                    <!-- test comment -->
+                    
+                    <test>
+                        <a> before</a>
+                        <b></b>
+                        <c>after </c>
+                    </test>
+                    """
+        do {
+            let xmlDocument = try XML.Document(xmlString: xml, options: .nodePreserveWhitespace)
+            let xml2 = xmlDocument.xmlString
+            XCTAssertEqual(xml2, xml)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+
     static var allTests : [(String, (XMLTests) -> () throws -> Void)] {
         return [
             ("testAddChild", testAddChild),
@@ -119,9 +163,12 @@ class XMLTests: XCTestCase {
             ("testAttributesDecodeEncode", testAttributesDecodeEncode),
             ("testNamespacesDecodeEncode", testNamespacesDecodeEncode),
             ("testArrayDecodeEncode", testArrayDecodeEncode),
-            ("testCommentDecodeEncode", testArrayDecodeEncode),
-            ("testCDATADecodeEncode", testArrayDecodeEncode),
-            ("testWhitespaceDecodeEncode", testWhitespaceDecodeEncode)
+            ("testCommentDecodeEncode", testCommentDecodeEncode),
+            ("testCDATADecodeEncode", testCDATADecodeEncode),
+            ("testWhitespaceDecodeEncode", testWhitespaceDecodeEncode),
+            ("testPreserveWhitespaceDecodeEncode", testPreserveWhitespaceDecodeEncode),
+            ("testCompactedEmptyElementsDecodeEncode", testCompactedEmptyElementsDecodeEncode),
+            ("testNodesOutsideRootElementDecodeEncode", testNodesOutsideRootElementDecodeEncode)
         ]
     }
 }
