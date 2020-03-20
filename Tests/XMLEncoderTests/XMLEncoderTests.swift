@@ -1,16 +1,6 @@
 import XCTest
 @testable import XMLEncoder
 
-protocol XMLCodableTest : XMLCodable {
-    static var _encoding: [String: XMLContainerCoding] { get }
-}
-
-extension XMLCodableTest {
-    public static func getXMLContainerCoding(for key: CodingKey) -> XMLContainerCoding? {
-        return _encoding[key.stringValue]
-    }
-}
-
 final class XMLEncoderTests: XCTestCase {
     
     struct Numbers : Codable {
@@ -67,21 +57,12 @@ final class XMLEncoderTests: XCTestCase {
         let stringEnum : StringEnum
     }
     
-    struct Arrays : XMLCodableTest {
-        public static var _encoding: [String: XMLContainerCoding] = [
-            "ArrayOfNatives": .array(entry: "member")
-        ]
-        
+    struct Arrays : Codable {
         let arrayOfNatives : [Int]
         let arrayOfShapes : [Numbers]
     }
     
-    struct Dictionaries : XMLCodableTest {
-        public static var _encoding: [String: XMLContainerCoding] = [
-            "Natives": .dictionary(entry: "entry", key: "key", value: "value"),
-            "Shapes": .dictionary(entry: nil, key: "key", value: "value")
-        ]
-
+    struct Dictionaries : Codable {
         let dictionaryOfNatives : [String:Int]
         let dictionaryOfShapes : [String:StringShape]
         
@@ -294,13 +275,9 @@ final class XMLEncoderTests: XCTestCase {
     }
     
     func testDecodeExpandedContainers() {
-        struct Shape : XMLCodableTest {
-            static let _encoding: [String : XMLContainerCoding] = [
-                "array" : .array(entry: "member"),
-                "dictionary" : .dictionary(entry: "entry", key: "key", value: "value")
-            ]
-            let array : [Int]
-            let dictionary : [String: Int]
+        struct Shape : Codable {
+            @Coding<DefaultArrayCoder> var array : [Int]
+            @Coding<DefaultDictionaryCoder> var dictionary : [String: Int]
         }
         let xmldata = "<Shape><array><member>3</member><member>2</member><member>1</member></array><dictionary><entry><key>one</key><value>1</value></entry><entry><key>two</key><value>2</value></entry><entry><key>three</key><value>3</value></entry></dictionary></Shape>"
         if let shape = testDecode(type: Shape.self, xml: xmldata) {
@@ -310,35 +287,41 @@ final class XMLEncoderTests: XCTestCase {
     }
     
     func testArrayEncodingDecodeEncode() {
-        struct Shape : XMLCodableTest {
-            static let _encoding: [String : XMLContainerCoding] = [
-                "array" : .array(entry: "member")
-            ]
-            let array : [Int]
+        struct Shape : Codable {
+            @Coding<DefaultArrayCoder> var array : [Int]
         }
         let xmldata = "<Shape><array><member>3</member><member>2</member><member>1</member></array></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
+    }
+    
+    func testOptionalArrayDecodeEncode() {
+        struct Shape : Codable {
+            @OptionalCoding<DefaultArrayCoder> var array : [Int]?
+        }
+        let xmldata = "<Shape><array><member>3</member><member>2</member><member>1</member></array></Shape>"
+        testDecodeEncode(type: Shape.self, xml: xmldata)
+        let xmldata2 = "<Shape></Shape>"
+        testDecodeEncode(type: Shape.self, xml: xmldata2)
     }
     
     func testArrayOfStructuresEncodingDecodeEncode() {
         struct Shape2 : Codable {
             let value : String
         }
-        struct Shape : XMLCodableTest {
-            static let _encoding: [String : XMLContainerCoding] = [
-                "array": .array(entry: "member")
-            ]
-            let array : [Shape2]
+        struct Shape : Codable {
+            @Coding<DefaultArrayCoder> var array : [Shape2]
         }
         let xmldata = "<Shape><array><member><value>test</value></member><member><value>test2</value></member><member><value>test3</value></member></array></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
     }
     
     func testDictionaryEncodingDecodeEncode() {
-        struct Shape : XMLCodableTest {
-            static let _encoding: [String : XMLContainerCoding] = ["d": .dictionary(entry: "item", key: "key", value: "value")]
-            
-            let d : [String:Int]
+        struct Shape : Codable {
+            struct _DEncodingProperties: DictionaryCoderProperties {
+                static let entry: String? = "item"; static let key = "key"; static let value = "value"
+            }
+            @Coding<DictionaryCoder<_DEncodingProperties, String, Int>>
+            var d : [String:Int]
         }
         let xmldata = "<Shape><d><item><key>member</key><value>4</value></item></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -348,20 +331,24 @@ final class XMLEncoderTests: XCTestCase {
         struct Shape2 : Codable {
             let float : Float
         }
-        struct Shape : XMLCodableTest {
-            static let _encoding: [String : XMLContainerCoding] = ["d": .dictionary(entry: "item", key: "key", value: "value")]
-            
-            let d : [String:Shape2]
+        struct Shape : Codable {
+            struct _DEncodingProperties: DictionaryCoderProperties {
+                static let entry: String? = "item"; static let key = "key"; static let value = "value"
+            }
+            @Coding<DictionaryCoder<_DEncodingProperties, String, Shape2>>
+            var d : [String: Shape2]
         }
         let xmldata = "<Shape><d><item><key>member</key><value><float>1.5</float></value></item></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
     }
     
     func testFlatDictionaryEncodingDecodeEncode() {
-        struct Shape : XMLCodableTest {
-            static var _encoding: [String : XMLContainerCoding] = ["d" : .dictionary(entry: nil, key: "key", value: "value")]
-            
-            let d : [String:Int]
+        struct Shape : Codable {
+            struct _DEncodingProperties: DictionaryCoderProperties {
+                static let entry: String? = nil; static let key = "key"; static let value = "value"
+            }
+            @Coding<DictionaryCoder<_DEncodingProperties, String, Int>>
+            var d : [String:Int]
         }
         let xmldata = "<Shape><d><key>member</key><value>4</value></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -372,12 +359,10 @@ final class XMLEncoderTests: XCTestCase {
             case member = "member"
             case member2 = "member2"
         }
-        struct Shape : XMLCodableTest {
-            static var _encoding: [String : XMLContainerCoding] = ["d" : .dictionary(entry: "item", key: "key", value: "value")]
-            
-            let d : [KeyEnum:Int]
+        struct Shape : Codable {
+            @Coding<DefaultDictionaryCoder> var d : [KeyEnum:Int]
         }
-        let xmldata = "<Shape><d><item><key>member</key><value>4</value></item></d></Shape>"
+        let xmldata = "<Shape><d><entry><key>member</key><value>4</value></entry></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
     }
     
@@ -386,10 +371,12 @@ final class XMLEncoderTests: XCTestCase {
             case member = "member"
             case member2 = "member2"
         }
-        struct Shape : XMLCodableTest {
-            static var _encoding: [String : XMLContainerCoding] = ["d" : .dictionary(entry: nil, key: "key", value: "value")]
-
-            let d : [KeyEnum:Int]
+        struct Shape : Codable {
+            struct _DEncodingProperties: DictionaryCoderProperties {
+                static let entry: String? = nil; static let key = "key"; static let value = "value"
+            }
+            @Coding<DictionaryCoder<_DEncodingProperties, KeyEnum, Int>>
+            var d : [KeyEnum:Int]
         }
         let xmldata = "<Shape><d><key>member</key><value>4</value></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -408,6 +395,7 @@ final class XMLEncoderTests: XCTestCase {
         ("testSerializeToXML", testSerializeToXML),
         ("testDecodeExpandedContainers", testDecodeExpandedContainers),
         ("testArrayEncodingDecodeEncode", testArrayEncodingDecodeEncode),
+        ("testOptionalArrayDecodeEncode", testOptionalArrayDecodeEncode),
         ("testArrayOfStructuresEncodingDecodeEncode", testArrayOfStructuresEncodingDecodeEncode),
         ("testDictionaryEncodingDecodeEncode", testDictionaryEncodingDecodeEncode),
         ("testDictionaryOfStructuresEncodingDecodeEncode", testDictionaryOfStructuresEncodingDecodeEncode),

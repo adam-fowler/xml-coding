@@ -9,9 +9,9 @@
 
 import Foundation
 
-// I have placed everything inside a holding XML class to avoid name clashes with the Foundation version. Otherwise this class reflects the behaviour of the Foundation classes as close as possible with the exceptions of, I haven't implemented queries, DTD, also XMLNodes do not contain an object reference. Also the node creation function in XMLNode return XMLNode instead of Any.
+// I have placed everything inside a holding XML enumeration to avoid name clashes with the Foundation version. Otherwise this class reflects the behaviour of the Foundation classes as close as possible with the exceptions of, I haven't implemented queries, DTD, also XMLNodes do not contain an object reference. Also the node creation function in XMLNode return XMLNode instead of Any.
 /// Holding class for all the XML objects.
-public class XML {
+public enum XML {
 
     /// XML node type
     public enum Kind {
