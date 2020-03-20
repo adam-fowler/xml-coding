@@ -274,6 +274,55 @@ final class XMLEncoderTests: XCTestCase {
         }
     }
     
+    func testNestedContainers() throws {
+        struct Object: Codable {
+            let firstName: String
+            let surname: String
+            let age: Int
+            let street: String
+            let city: String
+
+            init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.age = try container.decode(Int.self, forKey: .age)
+                let nameContainer = try container.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
+                self.firstName = try nameContainer.decode(String.self, forKey: .firstName)
+                self.surname = try nameContainer.decode(String.self, forKey: .surname)
+                let addressContainer = try container.nestedContainer(keyedBy: AddressCodingKeys.self, forKey: .address)
+                self.street = try addressContainer.decode(String.self, forKey: .street)
+                self.city = try addressContainer.decode(String.self, forKey: .city)
+            }
+            
+            func encode(to encoder: Encoder) throws {
+                var container = encoder.container(keyedBy: CodingKeys.self)
+                try container.encode(age, forKey: .age)
+                var nameContainer = container.nestedContainer(keyedBy: NameCodingKeys.self, forKey: .name)
+                try nameContainer.encode(firstName, forKey: .firstName)
+                try nameContainer.encode(surname, forKey: .surname)
+                var addressContainer = container.nestedContainer(keyedBy: AddressCodingKeys.self, forKey: .address)
+                try addressContainer.encode(street, forKey: .street)
+                try addressContainer.encode(city, forKey: .city)
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case name = "name"
+                case age = "age"
+                case address = "address"
+            }
+
+            private enum NameCodingKeys: String, CodingKey {
+                case firstName = "firstName"
+                case surname = "surname"
+            }
+            private enum AddressCodingKeys: String, CodingKey {
+                case street = "street"
+                case city = "city"
+            }
+        }
+        let xmldata = "<Object><age>65</age><name><firstName>John</firstName><surname>Smith</surname></name><address><street>Cambridge Street</street><city>Oxford</city></address></Object>"
+        testDecodeEncode(type: Object.self, xml: xmldata)
+    }
+    
     func testDecodeExpandedContainers() {
         struct Shape : Codable {
             @Coding<DefaultArrayCoder> var array : [Int]
@@ -393,6 +442,7 @@ final class XMLEncoderTests: XCTestCase {
         ("testDataDecodeEncode", testDataDecodeEncode),
         ("testUrlDecodeEncode", testUrlDecodeEncode),
         ("testSerializeToXML", testSerializeToXML),
+        ("testNestedContainers", testNestedContainers),
         ("testDecodeExpandedContainers", testDecodeExpandedContainers),
         ("testArrayEncodingDecodeEncode", testArrayEncodingDecodeEncode),
         ("testOptionalArrayDecodeEncode", testOptionalArrayDecodeEncode),
