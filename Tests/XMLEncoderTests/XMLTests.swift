@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import xml_encoder
+@testable import XMLEncoder
 
 class XMLTests: XCTestCase {
 

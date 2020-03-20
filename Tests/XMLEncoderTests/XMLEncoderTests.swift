@@ -1,5 +1,5 @@
 import XCTest
-@testable import xml_encoder
+@testable import XMLEncoder
 
 protocol XMLCodableTest : XMLCodable {
     static var _encoding: [String: XMLContainerCoding] { get }
