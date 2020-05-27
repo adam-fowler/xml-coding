@@ -1,65 +1,324 @@
 {
   "warnings": [
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XML.swift",
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 8,
+      "symbol": "CustomCoder.CodableValue",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 10,
+      "symbol": "CustomCoder.encode(value:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 11,
+      "symbol": "CustomCoder.decode(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 18,
+      "symbol": "Coding.init(wrappedValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 30,
+      "symbol": "Coding.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 40,
+      "symbol": "OptionalCoding.init(wrappedValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 53,
+      "symbol": "OptionalCoding.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 61,
+      "symbol": "OptionalCodingWrapper.WrappedType",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 62,
+      "symbol": "OptionalCodingWrapper.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 63,
+      "symbol": "OptionalCodingWrapper.init(wrappedValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 69,
+      "symbol": "KeyedDecodingContainer.decode(_:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CodableProperties.swift",
+      "line": 77,
+      "symbol": "KeyedEncodingContainer.encode(_:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 10,
+      "symbol": "ArrayCoderProperties.member",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 13,
+      "symbol": "ArrayCoder",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 14,
+      "symbol": "ArrayCoder.CodableValue",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 15,
+      "symbol": "ArrayCoder.decode(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 25,
+      "symbol": "ArrayCoder.encode(value:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 38,
+      "symbol": "DictionaryCoderProperties.entry",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 39,
+      "symbol": "DictionaryCoderProperties.key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 40,
+      "symbol": "DictionaryCoderProperties.value",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 43,
+      "symbol": "DictionaryCoder",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 44,
+      "symbol": "DictionaryCoder.CodableValue",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 46,
+      "symbol": "DictionaryCoder.decode(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 69,
+      "symbol": "DictionaryCoder.encode(value:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 93,
+      "symbol": "DefaultArrayCoderProperties.member",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 98,
+      "symbol": "DefaultDictionaryCoderProperties.entry",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 99,
+      "symbol": "DefaultDictionaryCoderProperties.key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 100,
+      "symbol": "DefaultDictionaryCoderProperties.value",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 103,
+      "symbol": "DefaultArrayCoder",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/CodableProperties/CollectionCoders.swift",
+      "line": 104,
+      "symbol": "DefaultDictionaryCoder",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XML.swift",
       "line": 18,
       "symbol": "XML.Kind.document",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XML.swift",
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XML.swift",
       "line": 19,
       "symbol": "XML.Kind.element",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XML.swift",
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XML.swift",
       "line": 20,
       "symbol": "XML.Kind.text",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XML.swift",
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XML.swift",
       "line": 21,
       "symbol": "XML.Kind.attribute",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XML.swift",
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XML.swift",
       "line": 22,
       "symbol": "XML.Kind.namespace",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XML.swift",
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XML.swift",
       "line": 23,
       "symbol": "XML.Kind.comment",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XMLDecoder.swift",
-      "line": 133,
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLDecoder.swift",
+      "line": 86,
       "symbol": "XMLDecoder.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XMLEncoder.swift",
-      "line": 115,
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLDecoder.swift",
+      "line": 97,
+      "symbol": "XML.Node.child(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLDecoder.swift",
+      "line": 101,
+      "symbol": "XML.Node.child(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLDecoder.swift",
+      "line": 107,
+      "symbol": "XML.Element.attribute(for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLEncoder.swift",
+      "line": 89,
       "symbol": "XMLEncoder.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/xml-encoder/XMLEncoder.swift",
-      "line": 117,
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLEncoder.swift",
+      "line": 91,
       "symbol": "XMLEncoder.encode(_:name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLEncoder.swift",
+      "line": 550,
+      "symbol": "_XMLEncoder.box(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLEncoder.swift",
+      "line": 583,
+      "symbol": "_XMLEncoder.box(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLEncoder.swift",
+      "line": 597,
+      "symbol": "_XMLEncoder.box(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/adamfowler/Documents/dev/macOS/lib/xml-encoder/Sources/XMLEncoder/XMLEncoder.swift",
+      "line": 602,
+      "symbol": "_XMLEncoder.box(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
