@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import XMLEncoder
+@testable import XMLCoding
 
 class XMLTests: XCTestCase {
 
@@ -102,9 +102,9 @@ class XMLTests: XCTestCase {
     func testWhitespaceDecodeEncode() {
         let xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test> <a> before</a><b></b> <c>after </c></test>"
         do {
-            let xmlDocument = try XML.Document(xmlString: xml)
+            let xmlDocument = try XML.Document(string: xml)
             let xml1 = xmlDocument.xmlString
-            let xmlDocument2 = try XML.Document(xmlString: xml, options: .nodePreserveWhitespace)
+            let xmlDocument2 = try XML.Document(string: xml, options: .nodePreserveWhitespace)
             let xml2 = xmlDocument2.xmlString
             XCTAssertEqual(xml1, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><test><a> before</a><b></b><c>after </c></test>")
             XCTAssertEqual(xml2, xml)
@@ -145,25 +145,9 @@ class XMLTests: XCTestCase {
         testDecodeEncode(xml: xml, options: .nodePreserveWhitespace)
     }
 
-    static var allTests : [(String, (XMLTests) -> () throws -> Void)] {
-        return [
-            ("testAddChild", testAddChild),
-            ("testAddRemoveChild", testAddRemoveChild),
-            ("testAttributeAdd", testAttributeAdd),
-            ("testAttributeReplace", testAttributeReplace),
-            ("testNamespaceAdd", testNamespaceAdd),
-            ("testNamespaceReplace", testNamespaceReplace),
-            ("testNullNamespaceReplace", testNamespaceReplace),
-            ("testAttributesDecodeEncode", testAttributesDecodeEncode),
-            ("testNamespacesDecodeEncode", testNamespacesDecodeEncode),
-            ("testArrayDecodeEncode", testArrayDecodeEncode),
-            ("testCommentDecodeEncode", testCommentDecodeEncode),
-            ("testCDATADecodeEncode", testCDATADecodeEncode),
-            ("testWhitespaceDecodeEncode", testWhitespaceDecodeEncode),
-            ("testPreserveWhitespaceDecodeEncode", testPreserveWhitespaceDecodeEncode),
-            ("testCompactedEmptyElementsDecodeEncode", testCompactedEmptyElementsDecodeEncode),
-            ("testNodesOutsideRootElementDecodeEncode", testNodesOutsideRootElementDecodeEncode)
-        ]
+    func testInvalidXml() throws {
+        let xml = "{}"
+        XCTAssertThrowsError(try XML.Document(string: xml))
     }
 }
 

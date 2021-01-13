@@ -1,7 +1,7 @@
 import XCTest
-@testable import XMLEncoder
+@testable import XMLCoding
 
-final class XMLEncoderTests: XCTestCase {
+final class XMLCodingTests: XCTestCase {
     
     struct Numbers : Codable {
         
@@ -430,27 +430,4 @@ final class XMLEncoderTests: XCTestCase {
         let xmldata = "<Shape><d><key>member</key><value>4</value></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
     }
-    
-    static var allTests = [
-        ("testSimpleStructureDecodeEncode", testSimpleStructureDecodeEncode),
-        ("testContainingStructureDecodeEncode", testContainingStructureDecodeEncode),
-        ("testEnumDecodeEncode", testEnumDecodeEncode),
-        ("testArrayDecodeEncode", testArrayDecodeEncode),
-        ("testArrayOfStructuresDecodeEncode", testArrayOfStructuresDecodeEncode),
-        ("testDictionaryDecodeEncode", testDictionaryDecodeEncode),
-        ("testDateDecodeEncode", testDateDecodeEncode),
-        ("testDataDecodeEncode", testDataDecodeEncode),
-        ("testUrlDecodeEncode", testUrlDecodeEncode),
-        ("testSerializeToXML", testSerializeToXML),
-        ("testNestedContainers", testNestedContainers),
-        ("testDecodeExpandedContainers", testDecodeExpandedContainers),
-        ("testArrayEncodingDecodeEncode", testArrayEncodingDecodeEncode),
-        ("testOptionalArrayDecodeEncode", testOptionalArrayDecodeEncode),
-        ("testArrayOfStructuresEncodingDecodeEncode", testArrayOfStructuresEncodingDecodeEncode),
-        ("testDictionaryEncodingDecodeEncode", testDictionaryEncodingDecodeEncode),
-        ("testDictionaryOfStructuresEncodingDecodeEncode", testDictionaryOfStructuresEncodingDecodeEncode),
-        ("testFlatDictionaryEncodingDecodeEncode", testFlatDictionaryEncodingDecodeEncode),
-        ("testEnumDictionaryEncodingDecodeEncode", testEnumDictionaryEncodingDecodeEncode),
-        ("testEnumFlatDictionaryEncodingDecodeEncode", testEnumFlatDictionaryEncodingDecodeEncode),
-    ]
 }

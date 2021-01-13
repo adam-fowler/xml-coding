@@ -278,14 +278,15 @@ public enum XML {
             parser.delegate = parserDelegate
             if !parser.parse() {
                 if let error = parserDelegate.error {
-                    throw error
+                    throw ParsingError.parseError(error)
                 }
+                throw ParsingError.noXMLFound
             }
         }
 
         /// Initialise with a string containing XML data
-        convenience public init(xmlString: String, options: Options = []) throws {
-            let data = xmlString.data(using: .utf8)!
+        convenience public init(string: String, options: Options = []) throws {
+            let data = string.data(using: .utf8)!
             try self.init(data: data, options: options)
         }
 
@@ -337,15 +338,16 @@ public enum XML {
         }
 
         /// Initialise XML Element from XML data
-        public init(xmlData: Data, options: Options = []) throws {
+        public init(data: Data, options: Options = []) throws {
             super.init(.element)
-            let parser = XMLParser(data: xmlData)
+            let parser = XMLParser(data: data)
             let parserDelegate = ParserDelegate(options: options)
             parser.delegate = parserDelegate
             if !parser.parse() {
                 if let error = parserDelegate.error {
-                    throw error
+                    throw ParsingError.parseError(error)
                 }
+                throw ParsingError.noXMLFound
             } else if let rootElement = parserDelegate.rootElement {
                 // copy contents of rootElement
                 self.setChildren(rootElement.children)
@@ -358,9 +360,9 @@ public enum XML {
         }
 
         /// Initialise XML Element from string containing XML
-        convenience public init(xmlString: String, options: Options = []) throws {
-            let data = xmlString.data(using: .utf8)!
-            try self.init(xmlData: data, options: options)
+        convenience public init(string: String, options: Options = []) throws {
+            let data = string.data(using: .utf8)!
+            try self.init(data: data, options: options)
         }
 
         /// Return children XML elements with a given name
@@ -496,13 +498,19 @@ public enum XML {
     }
 
     /// XML parsing errors
-    enum ParsingError : Error {
+    enum ParsingError: Error {
         case emptyFile
+        case noXMLFound
+        case parseError(Error)
 
         var localizedDescription: String {
             switch self {
             case .emptyFile:
                 return "File contained nothing"
+            case .parseError(let error):
+                return "Error parsing file: \(error)"
+            case .noXMLFound:
+                return "File didn't contain any XML"
             }
         }
     }

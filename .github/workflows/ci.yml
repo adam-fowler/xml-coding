@@ -36,4 +36,4 @@ jobs:
         apt-get update -qq
         apt-get install -q -y zlib1g-dev
     - name: Build + Test
-      run: swift test
+      run: swift test --enable-test-discovery
