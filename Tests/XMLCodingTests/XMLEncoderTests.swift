@@ -325,8 +325,8 @@ final class XMLCodingTests: XCTestCase {
     
     func testDecodeExpandedContainers() {
         struct Shape : Codable {
-            @Coding<DefaultArrayCoder> var array : [Int]
-            @Coding<DefaultDictionaryCoder> var dictionary : [String: Int]
+            @CustomCoding<DefaultArrayCoder> var array : [Int]
+            @CustomCoding<DefaultDictionaryCoder> var dictionary : [String: Int]
         }
         let xmldata = "<Shape><array><member>3</member><member>2</member><member>1</member></array><dictionary><entry><key>one</key><value>1</value></entry><entry><key>two</key><value>2</value></entry><entry><key>three</key><value>3</value></entry></dictionary></Shape>"
         if let shape = testDecode(type: Shape.self, xml: xmldata) {
@@ -337,7 +337,7 @@ final class XMLCodingTests: XCTestCase {
     
     func testArrayEncodingDecodeEncode() {
         struct Shape : Codable {
-            @Coding<DefaultArrayCoder> var array : [Int]
+            @CustomCoding<DefaultArrayCoder> var array : [Int]
         }
         let xmldata = "<Shape><array><member>3</member><member>2</member><member>1</member></array></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -345,7 +345,7 @@ final class XMLCodingTests: XCTestCase {
     
     func testOptionalArrayDecodeEncode() {
         struct Shape : Codable {
-            @OptionalCoding<DefaultArrayCoder> var array : [Int]?
+            @OptionalCustomCoding<DefaultArrayCoder> var array : [Int]?
         }
         let xmldata = "<Shape><array><member>3</member><member>2</member><member>1</member></array></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -358,7 +358,7 @@ final class XMLCodingTests: XCTestCase {
             let value : String
         }
         struct Shape : Codable {
-            @Coding<DefaultArrayCoder> var array : [Shape2]
+            @CustomCoding<DefaultArrayCoder> var array : [Shape2]
         }
         let xmldata = "<Shape><array><member><value>test</value></member><member><value>test2</value></member><member><value>test3</value></member></array></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -369,7 +369,7 @@ final class XMLCodingTests: XCTestCase {
             struct _DEncodingProperties: DictionaryCoderProperties {
                 static let entry: String? = "item"; static let key = "key"; static let value = "value"
             }
-            @Coding<DictionaryCoder<_DEncodingProperties, String, Int>>
+            @CustomCoding<DictionaryCoder<_DEncodingProperties, String, Int>>
             var d : [String:Int]
         }
         let xmldata = "<Shape><d><item><key>member</key><value>4</value></item></d></Shape>"
@@ -384,7 +384,7 @@ final class XMLCodingTests: XCTestCase {
             struct _DEncodingProperties: DictionaryCoderProperties {
                 static let entry: String? = "item"; static let key = "key"; static let value = "value"
             }
-            @Coding<DictionaryCoder<_DEncodingProperties, String, Shape2>>
+            @CustomCoding<DictionaryCoder<_DEncodingProperties, String, Shape2>>
             var d : [String: Shape2]
         }
         let xmldata = "<Shape><d><item><key>member</key><value><float>1.5</float></value></item></d></Shape>"
@@ -396,7 +396,7 @@ final class XMLCodingTests: XCTestCase {
             struct _DEncodingProperties: DictionaryCoderProperties {
                 static let entry: String? = nil; static let key = "key"; static let value = "value"
             }
-            @Coding<DictionaryCoder<_DEncodingProperties, String, Int>>
+            @CustomCoding<DictionaryCoder<_DEncodingProperties, String, Int>>
             var d : [String:Int]
         }
         let xmldata = "<Shape><d><key>member</key><value>4</value></d></Shape>"
@@ -409,7 +409,7 @@ final class XMLCodingTests: XCTestCase {
             case member2 = "member2"
         }
         struct Shape : Codable {
-            @Coding<DefaultDictionaryCoder> var d : [KeyEnum:Int]
+            @CustomCoding<DefaultDictionaryCoder> var d : [KeyEnum:Int]
         }
         let xmldata = "<Shape><d><entry><key>member</key><value>4</value></entry></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
@@ -424,7 +424,7 @@ final class XMLCodingTests: XCTestCase {
             struct _DEncodingProperties: DictionaryCoderProperties {
                 static let entry: String? = nil; static let key = "key"; static let value = "value"
             }
-            @Coding<DictionaryCoder<_DEncodingProperties, KeyEnum, Int>>
+            @CustomCoding<DictionaryCoder<_DEncodingProperties, KeyEnum, Int>>
             var d : [KeyEnum:Int]
         }
         let xmldata = "<Shape><d><key>member</key><value>4</value></d></Shape>"

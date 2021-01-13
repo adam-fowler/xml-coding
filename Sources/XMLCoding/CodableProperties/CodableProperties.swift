@@ -12,7 +12,7 @@ public protocol CustomCoder {
 }
 
 /// Property wrapper that applies a custom encoder and decoder to its wrapped value
-@propertyWrapper public struct Coding<Coder: CustomCoder>: Codable {
+@propertyWrapper public struct CustomCoding<Coder: CustomCoder>: Codable {
     var value: Coder.CodableValue
 
     public init(wrappedValue value: Coder.CodableValue) {
@@ -34,7 +34,7 @@ public protocol CustomCoder {
 }
 
 /// Property wrapper that applies a custom encoder and decoder to its wrapped optional value
-@propertyWrapper public struct OptionalCoding<Coder: CustomCoder>: Codable {
+@propertyWrapper public struct OptionalCustomCoding<Coder: CustomCoder>: Codable {
     var value: Coder.CodableValue?
 
     public init(wrappedValue value: Coder.CodableValue?) {
@@ -81,7 +81,7 @@ extension KeyedEncodingContainer {
 }
 
 /// extend OptionalCoding so it conforms to OptionalCodingWrapper
-extension OptionalCoding: OptionalCodingWrapper {}
+extension OptionalCustomCoding: OptionalCodingWrapper {}
 
 /// CodingKey used by Encoder property wrappers
 internal struct _EncodingWrapperKey : CodingKey {
