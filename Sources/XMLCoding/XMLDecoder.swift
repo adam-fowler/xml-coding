@@ -175,9 +175,9 @@ fileprivate class _XMLDecoder : Decoder {
             } ?? []
         }
 
-        /// return if decoder has a value for a key
+        /// return if decoder has a value for a key (need to check for child element or attribute)
         func contains(_ key: Key) -> Bool {
-            return element.child(for: key) != nil
+            return element.child(for: key) != nil || (element as? XML.Element)?.attribute(for: key) != nil
         }
 
         /// get the XMLElment for a particular key

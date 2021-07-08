@@ -430,4 +430,13 @@ final class XMLCodingTests: XCTestCase {
         let xmldata = "<Shape><d><key>member</key><value>4</value></d></Shape>"
         testDecodeEncode(type: Shape.self, xml: xmldata)
     }
+    
+    func testOptionalAttribute() throws {
+        struct OptionalString: Codable {
+            let string: String?
+        }
+        let xmldata = #"<optional string="test"/>"#
+        let result = try XCTUnwrap(testDecode(type: OptionalString.self, xml: xmldata))
+        XCTAssertEqual(result.string, "test")
+    }
 }
